@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
  config.vm.provision "shell", inline: <<-SHELL
    systemctl disable apt-daily.service
    systemctl disable apt-daily.timer
-
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
    sudo apt-get update
    sudo apt-get install -y python3-venv zip
    touch /home/vagrant/.bash_aliases
@@ -30,3 +30,4 @@ Vagrant.configure("2") do |config|
    fi
  SHELL
 end
+@hiraghuak
